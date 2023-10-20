@@ -60,8 +60,6 @@
             border: 1px solid black;
         }
         .results{
-            /* background-color: red; */
-            /* padding: 8% 18%; */
             min-width: 60%;
             min-height: 50%;
             border-radius: 30px;
@@ -84,7 +82,6 @@
             background-color: rgb(58, 220, 58);
             min-width: 30%;
             padding: 2rem;
-            /* justify-content: space-between; */
             border-radius: 20px;
         }
         .nearlby{
@@ -138,18 +135,18 @@
 const groceryPriceElement = document.getElementById("grocery-price");
 const onlinePriceElement = document.getElementById("online-price");
 const onlineRetailerPrices = {
-    Apples: 125,      // ₹125 per kg
-    Bananas: 40,      // ₹40 per dozen
-    Potatoes: 30,     // ₹30 per kg
-    Milk: 60,         // ₹60 per liter
-    Namkeen: 150,     // ₹150 per pack
+    Apples: 150,
+    Bananas: 40,
+    Potatoes: 30,
+    Milk: 60,
+    Namkeen: 100,
 };
 const groceryStorePrices = {
-    Apples: 130,      // ₹130 per kg
-    Bananas: 45,      // ₹45 per dozen
-    Potatoes: 32,     // ₹32 per kg
-    Milk: 65,         // ₹65 per liter
-    Namkeen: 155,     // ₹155 per pack
+    Apples: 130,
+    Bananas: 35,
+    Potatoes: 32,
+    Milk: 60,
+    Namkeen: 150,
 };
 function updatePrices() {
     const selectedItem = document.getElementById("item-name").value;
