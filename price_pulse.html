@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Pulse</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        header {
+            background-color: #2e20c6;
+            color: #fff;
+            padding: 10px;
+        }
+        main {
+            margin: 20px;
+        }
+        select {
+            padding: 5px;
+            border: 1px solid #050508;
+        }
+        .price-result {
+            margin: 20px 0;
+        }
+        .wrapper{
+            background-color: red;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(90deg, rgba(162,196,237,1) 4%, rgba(15,194,231,1) 100%);
+        }
+        .main1{
+            display: flex;
+            align-items: center;
+            height: 80%;
+            flex-direction: column;
+            width: 100%;
+            margin: auto;
+            justify-content: space-evenly;
+        }
+        .selectItem{
+            font-size: 2rem;
+        }
+        .selectItem1{
+            font-size: 2rem;
+        }
+        .stylebox{
+            border-radius: 10px;
+            min-width: 200px;
+            min-height: 50px;
+            padding-bottom: 5px;
+            color:rgb(71, 63, 230);
+            background: rgb(111, 184, 206);
+            font-weight: 600;
+            font-size: 32px;
+            outline: none;
+            border: 1px solid black;
+        }
+        .results{
+            /* background-color: red; */
+            /* padding: 8% 18%; */
+            min-width: 60%;
+            min-height: 50%;
+            border-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+        .InsideResult{
+            display: flex;
+            min-width: 60%;
+            justify-content: space-around;
+        }
+        .resultsText{
+            font-size: 2rem;
+            opacity: .7;
+        }
+        .price-result{
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(58, 220, 58);
+            min-width: 30%;
+            padding: 2rem;
+            /* justify-content: space-between; */
+            border-radius: 20px;
+        }
+        .nearlby{
+            margin-bottom: 10px;
+        }
+        @media only screen and (max-width:901px) {
+            .InsideResult{
+            display: flex;
+            flex-direction: column;
+            min-width: 60%;
+            justify-content: space-around;
+        }  
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>Price Pulse</h1>
+        </header>
+        <main class="main1">
+            <div class="search-box selectItem1">
+                <label class="selectItem" for="item-name">Select an Item:</label>
+                <select  class="stylebox" id="item-name">
+                    <option class="selectItem1" value="Apples">Apples</option>
+                    <option class="selectItem1" value="Bananas">Bananas</option>
+                    <option class="selectItem1" value="Potatoes">Potatoes</option>
+                    <option class="selectItem1" value="Milk">Milk</option>
+                    <option class="selectItem1" value="Namkeen">Namkeen</option>
+                </select>
+            </div>
+            <div class="results">
+                <div><h2  class="resultsText">Results</h2></div>
+                <div class="InsideResult">
+                    <div class="price-result" id="grocery-store">
+                        <div><h3 class="nearlby">Nearby Store</h3></div>
+                        <div><p id="grocery-price">Price: <span>₹0.00</span></p></div>
+                    </div>
+                    <div class="price-result" id="online-retailer">
+                        <div><h3 class="nearlby">Online Retailer</h3></div>
+                        <div><p id="online-price">Price: <span>₹0.00</span></p></div>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <p>&copy; 2023 Price Comparison App</p>
+            </footer>
+        </main>
+    </div>
+    <script>
+const groceryPriceElement = document.getElementById("grocery-price");
+const onlinePriceElement = document.getElementById("online-price");
+const onlineRetailerPrices = {
+    Apples: 125,      // ₹125 per kg
+    Bananas: 40,      // ₹40 per dozen
+    Potatoes: 30,     // ₹30 per kg
+    Milk: 60,         // ₹60 per liter
+    Namkeen: 150,     // ₹150 per pack
+};
+const groceryStorePrices = {
+    Apples: 130,      // ₹130 per kg
+    Bananas: 45,      // ₹45 per dozen
+    Potatoes: 32,     // ₹32 per kg
+    Milk: 65,         // ₹65 per liter
+    Namkeen: 155,     // ₹155 per pack
+};
+function updatePrices() {
+    const selectedItem = document.getElementById("item-name").value;
+    const onlinePrice = onlineRetailerPrices[selectedItem];
+    const groceryPrice = groceryStorePrices[selectedItem];
+    onlinePriceElement.innerHTML = `Price at Online Retailer: ₹${onlinePrice}/Kg`;
+    groceryPriceElement.innerHTML = `Price at Nearby Grocery Store: ₹${groceryPrice}/Kg`;
+}
+document.getElementById("item-name").addEventListener("change", updatePrices);
+updatePrices();
+</script>
+</body>
+</html>
